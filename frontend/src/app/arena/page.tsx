@@ -362,7 +362,7 @@ export default function Arena() {
   const stalls = [
     {
       id: 1,
-      name: "Token Swap Terminal",
+      name: "Swap Terminal",
       x: viewportSize.width * 0.25 - 90,
       y: viewportSize.height * 0.35,
       width: 160,
@@ -370,7 +370,8 @@ export default function Arena() {
       bgColor: theme === "space" ? "bg-blue-800" : "bg-amber-800",
       icon: "🔄",
       description: "Swap your tokens on Rootstock blockchain",
-      type: theme === "space" ? "station" : "outpost",
+      type: theme === "space" ? ("station" as const) : ("outpost" as const),
+      variant: "portal",
     },
     {
       id: 2,
@@ -383,54 +384,59 @@ export default function Arena() {
       icon: "📈",
       description: "Stake your assets and earn rewards",
       type: theme === "space" ? "station" : "outpost",
+      variant: "companion",
     },
     {
       id: 3,
-      name: "Data Center",
+      name: "Info Hub",
       x: viewportSize.width * 0.5 - 90,
-      y: viewportSize.height * 0.25,
+      y: viewportSize.height * 0.35,
       width: 160,
       height: 100,
       bgColor: theme === "space" ? "bg-blue-900" : "bg-amber-900",
       icon: "ℹ️",
       description: "Get information about crypto markets",
       type: theme === "space" ? "station" : "outpost",
+      variant: "plant"
     },
     {
       id: 4,
       name: "Oracle Hub",
-      x: viewportSize.width * 0.45 - 90,
-      y: viewportSize.height * 0.6,
+      x: viewportSize.width * 0.50 - 90,
+      y: viewportSize.height * 0.7,
       width: 160,
       height: 100,
       bgColor: theme === "space" ? "bg-violet-800" : "bg-yellow-800",
       icon: "💰",
       description: "Get the latest token price data",
       type: theme === "space" ? "station" : "outpost",
+      variant: "hologram"
     },
     {
       id: 5,
       name: "Balance Scanner",
-      x: viewportSize.width * 0.8 - 90,
-      y: viewportSize.height * 0.28,
+      x: viewportSize.width * 0.86 - 90,
+      y: viewportSize.height * 0.35,
       width: 160,
       height: 100,
       bgColor: theme === "space" ? "bg-cyan-800" : "bg-amber-700",
       icon: "💼",
       description: "Check your token balances on Rootstock",
       type: theme === "space" ? "station" : "outpost",
+      variant: "artifact"
     },
     {
       id: 6,
       name: "Transfer Module",
-      x: viewportSize.width * 0.7 - 90,
-      y: viewportSize.height * 0.55,
+      x: viewportSize.width * 0.85 - 90,
+      y: viewportSize.height * 0.65,
       width: 160,
       height: 100,
       bgColor: theme === "space" ? "bg-purple-800" : "bg-yellow-900",
       icon: "📤",
       description: "Transfer tokens to other wallets",
       type: theme === "space" ? "station" : "outpost",
+      variant: "hologram"
     },
   ];
 
@@ -497,13 +503,13 @@ export default function Arena() {
         theme={theme} // Add this line
       />
 
-      <TeamButtons
+      {/* <TeamButtons
         roomCode={roomCode}
         isConnected={isConnected}
         socketError={socketError}
         handleCreateTeam={handleCreateTeam}
         handleJoinTeam={handleJoinTeam}
-      />
+      /> */}
 
       <TeamModals
         isCreatingTeam={isCreatingTeam}

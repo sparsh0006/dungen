@@ -1,4 +1,10 @@
 import React from "react";
+import HologramStall from './stalls/HologramStall';
+import PlantStall from './stalls/PlantStall';
+import PortalStall from './stalls/PortalStall';
+import ArtifactStall from './stalls/ArtifactStall';
+import CompanionStall from './stalls/CompanionStall';
+import DefaultStall from './stalls/DefaultStall';
 
 interface StallProps {
   stall: {
@@ -9,34 +15,56 @@ interface StallProps {
     width: number;
     height: number;
     bgColor: string;
+    borderColor?: string;
+    roofColor?: string;
+    roofAltColor?: string;
+    accentColor?: string;
+    darkColor?: string;
+    counterColor?: string;
+    area?: string;
     icon: string;
     description: string;
-    type: string//"station" | "outpost";
+    decorations?: string[];
+    isExpansion?: boolean;
+    type: string; // "station" | "outpost"
+    variant?: string; // "hologram" | "plant" | "portal" | "artifact" | "companion" | "default"
   };
   activeTile: number | null;
 }
+
+const StallVariants = {
+  hologram: (props: any) => <HologramStall {...props} />,
+  plant: (props: any) => <PlantStall {...props} />,
+  portal: (props: any) => <PortalStall {...props} />,
+  artifact: (props: any) => <ArtifactStall {...props} />,
+  companion: (props: any) => <CompanionStall {...props} />,
+  default: (props: any) => <DefaultStall {...props} />  // Keep original stall as an option
+};
 
 const Stall: React.FC<StallProps> = ({ stall, activeTile }) => {
   const isActive = activeTile === stall.id;
   const isStation = stall.type === "station";
 
+  // Use the appropriate stall variant if specified, otherwise render the new default
+  if (stall.variant && StallVariants[stall.variant as keyof typeof StallVariants]) {
+    // Pass the original stall props to the variant component
+    return StallVariants[stall.variant as keyof typeof StallVariants]({ stall, activeTile });
+  }
+
+  // Default new design - Space/Cave themed stall
   return (
     <div
-      className={`absolute border rounded-md shadow-lg overflow-hidden transition-all ${
-        isActive ? "ring-2 ring-opacity-70" : ""
-      } ${isStation 
-        ? `${stall.bgColor} border-blue-500 ${isActive ? "ring-blue-400" : ""}` 
-        : `${stall.bgColor} border-amber-700 ${isActive ? "ring-amber-400" : ""}`}`
-      }
+      className={`absolute ${stall.bgColor} bg-opacity-30 backdrop-blur-sm border border-opacity-10 rounded-lg overflow-hidden ${
+        activeTile === stall.id ? "ring-2 ring-white ring-opacity-50 shadow-glow" : ""
+      }`}
       style={{
         left: `${stall.x}px`,
         top: `${stall.y}px`,
         width: `${stall.width}px`,
         height: `${stall.height}px`,
         zIndex: 20,
-        boxShadow: isStation 
-          ? "0 0 15px rgba(59, 130, 246, 0.3)" 
-          : "0 0 15px rgba(217, 119, 6, 0.3)",
+        animation: "pulse 3s infinite",
+        boxShadow: "0 0 15px rgba(255, 255, 255, 0.2)",
       }}
     >
       {/* Header */}
@@ -92,8 +120,28 @@ const Stall: React.FC<StallProps> = ({ stall, activeTile }) => {
           )}
         </div>
         
+        {/* Floating particles */}
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div
+            key={`particle-${i}`}
+            className={`absolute w-1 h-1 rounded-full ${isStation ? 'bg-blue-200' : 'bg-amber-200'}`}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              opacity: Math.random() * 0.5 + 0.2,
+              animation: `float ${2 + Math.random() * 3}s infinite`,
+              animationDelay: `${Math.random() * 2}s`,
+            }}
+          />
+        ))}
+        
         <div className="relative z-10 flex flex-col items-center justify-center h-full w-full">
-          <div className={`text-3xl mb-2 ${isActive ? "animate-pulse" : ""}`}>
+          <div className={`text-3xl mb-2 ${isActive ? "animate-pulse" : ""}`}
+               style={{
+                 filter: isStation ? 
+                   "drop-shadow(0 0 8px rgba(59, 130, 246, 0.5))" : 
+                   "drop-shadow(0 0 8px rgba(245, 158, 11, 0.5))"
+               }}>
             {stall.icon}
           </div>
           {isActive && (
@@ -113,6 +161,23 @@ const Stall: React.FC<StallProps> = ({ stall, activeTile }) => {
           </div>
         </div>
       )}
+
+      {/* Add animation keyframes */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-5px); }
+        }
+        
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.7; }
+        }
+        
+        .shadow-glow {
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+        }
+      `}</style>
     </div>
   );
 };
