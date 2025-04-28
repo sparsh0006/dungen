@@ -13,7 +13,7 @@ const EmoteMenu: React.FC<EmoteMenuProps> = ({
 }) => {
   return (
     <div
-      className="absolute z-50 bg-gray-800 bg-opacity-90 p-2 rounded-lg border border-gray-700 flex flex-wrap gap-2 w-40"
+      className="absolute z-50 bg-gray-800 bg-opacity-90 p-2 rounded-md border border-gray-600 flex flex-wrap gap-2 w-40"
       style={{ left: `${position.x}px`, top: `${position.y - 60}px` }}
     >
       {emotes.map((emote, idx) => (

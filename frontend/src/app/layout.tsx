@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Taifei Bazaar",
-  description: "A night market metaverse for frens",
+  title: "Crypto-Market",
+  description: "A simple crypto market interface",
 };
 
 export default function RootLayout({

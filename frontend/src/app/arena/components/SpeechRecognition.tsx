@@ -57,14 +57,14 @@ const SpeechRecognitionUi: React.FC<SpeechRecognitionUiProps> = ({
             top: `${position.y - 40}px`,
           }}
         >
-          <div className="bg-gray-900 bg-opacity-90 px-3 py-2 rounded-md border border-gray-700 flex items-center">
+          <div className="bg-gray-800 bg-opacity-90 px-3 py-2 rounded-md border border-gray-600 flex items-center">
             <div
               className={`w-2 h-2 rounded-full mr-2 ${
                 isRecording ? "bg-green-500" : "bg-blue-500"
               } animate-pulse`}
             ></div>
-            <span className="text-white text-sm font-pixel">
-              {isRecording ? "Recording" : "Agent Thinking..."}
+            <span className="text-white text-sm">
+              {isRecording ? "Recording" : "Processing..."}
             </span>
             {isProcessing && (
               <div className="ml-2 w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
@@ -81,8 +81,8 @@ const SpeechRecognitionUi: React.FC<SpeechRecognitionUiProps> = ({
             top: `${position.y - 60}px`,
           }}
         >
-          <div className="bg-red-900 bg-opacity-90 px-3 py-2 rounded-md border border-red-700">
-            <span className="text-white text-sm font-pixel">{error}</span>
+          <div className="bg-red-700 bg-opacity-90 px-3 py-2 rounded-md border border-red-600">
+            <span className="text-white text-sm">{error}</span>
           </div>
         </div>
       )}
@@ -100,8 +100,8 @@ const SpeechRecognitionUi: React.FC<SpeechRecognitionUiProps> = ({
               maxWidth: "200px",
             }}
           >
-            <div className="bg-blue-900 bg-opacity-90 px-3 py-2 rounded-md border border-blue-700">
-              <span className="text-white text-sm font-pixel">
+            <div className="bg-blue-700 bg-opacity-90 px-3 py-2 rounded-md border border-blue-600">
+              <span className="text-white text-sm">
                 {visibleResponse}
               </span>
             </div>

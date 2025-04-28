@@ -25,10 +25,10 @@ const TeamModals: React.FC<TeamModalsProps> = ({
 
   return (
     <div className="absolute top-40 left-0 w-full flex justify-center z-40">
-      <div className="bg-gray-900 bg-opacity-90 p-6 rounded-lg border-2 border-gray-700 shadow-xl max-w-md w-full">
+      <div className="bg-gray-800 bg-opacity-90 p-6 rounded-lg border border-gray-700 shadow-xl max-w-md w-full">
         {isCreatingTeam && (
           <div className="flex flex-col items-center">
-            <h3 className="text-xl font-pixel text-white mb-2">
+            <h3 className="text-xl text-white mb-2">
               Your Room Code
             </h3>
             <p className="text-sm text-gray-300 mb-4">
@@ -36,7 +36,7 @@ const TeamModals: React.FC<TeamModalsProps> = ({
             </p>
             {!roomCode ? (
               <div className="flex flex-col items-center justify-center mb-6">
-                <div className="w-16 h-16 border-4 border-t-4 border-yellow-500 rounded-full animate-spin mb-4"></div>
+                <div className="w-16 h-16 border-4 border-t-4 border-blue-500 rounded-full animate-spin mb-4"></div>
                 <p className="text-white text-sm">Generating room code...</p>
               </div>
             ) : (
@@ -44,13 +44,10 @@ const TeamModals: React.FC<TeamModalsProps> = ({
                 {roomCode.split("").map((char, idx) => (
                   <div
                     key={idx}
-                    className="w-12 h-16 bg-gradient-to-b from-yellow-600 to-yellow-800 flex items-center justify-center mx-1 rounded-md border-2 border-yellow-500 shadow-inner"
+                    className="w-12 h-16 bg-blue-700 flex items-center justify-center mx-1 rounded-md border border-blue-500 shadow-inner"
                   >
                     <span
-                      className="text-2xl font-pixel text-white"
-                      style={{
-                        textShadow: "0 0 5px rgba(255, 215, 0, 0.5)",
-                      }}
+                      className="text-2xl text-white"
                     >
                       {char}
                     </span>
@@ -60,7 +57,7 @@ const TeamModals: React.FC<TeamModalsProps> = ({
             )}
             <button
               onClick={closeTeamModals}
-              className="bg-green-600 hover:bg-green-700 text-white font-pixel px-6 py-2 rounded"
+              className="bg-green-600 hover:bg-green-500 text-white px-6 py-2 rounded"
               disabled={!roomCode}
             >
               {roomCode ? "Ready!" : "Please wait..."}
@@ -69,7 +66,7 @@ const TeamModals: React.FC<TeamModalsProps> = ({
         )}
         {isJoiningTeam && (
           <div className="flex flex-col items-center">
-            <h3 className="text-xl font-pixel text-white mb-2">
+            <h3 className="text-xl text-white mb-2">
               Enter Room Code
             </h3>
             <p className="text-sm text-gray-300 mb-4">
@@ -82,7 +79,7 @@ const TeamModals: React.FC<TeamModalsProps> = ({
                     key={idx}
                     type="text"
                     maxLength={1}
-                    className="w-12 h-16 bg-gray-800 border-2 border-indigo-500 rounded-md text-center mx-1 text-2xl font-pixel text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400 uppercase"
+                    className="w-12 h-16 bg-gray-700 border border-blue-500 rounded-md text-center mx-1 text-2xl text-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 uppercase"
                     value={joinTeamInput[idx] || ""}
                     onChange={(e) => {
                       const val = e.target.value.toUpperCase();
@@ -117,7 +114,7 @@ const TeamModals: React.FC<TeamModalsProps> = ({
                 <button
                   type="button"
                   onClick={closeTeamModals}
-                  className="bg-gray-600 hover:bg-gray-700 text-white font-pixel px-4 py-2 rounded mr-3"
+                  className="bg-gray-600 hover:bg-gray-500 text-white px-4 py-2 rounded mr-3"
                 >
                   Cancel
                 </button>
@@ -126,9 +123,9 @@ const TeamModals: React.FC<TeamModalsProps> = ({
                   disabled={joinTeamInput.length !== 5}
                   className={`${
                     joinTeamInput.length === 5
-                      ? "bg-blue-600 hover:bg-blue-700"
+                      ? "bg-blue-600 hover:bg-blue-500"
                       : "bg-blue-900 cursor-not-allowed"
-                  } text-white font-pixel px-6 py-2 rounded`}
+                  } text-white px-6 py-2 rounded`}
                 >
                   Join
                 </button>
@@ -137,7 +134,7 @@ const TeamModals: React.FC<TeamModalsProps> = ({
           </div>
         )}
         {socketError && (
-          <div className="bg-red-900 bg-opacity-70 p-3 mt-4 rounded-md">
+          <div className="bg-red-800 bg-opacity-70 p-3 mt-4 rounded-md">
             <p className="text-red-200 text-sm">{socketError}</p>
           </div>
         )}

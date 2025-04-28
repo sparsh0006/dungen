@@ -17,7 +17,6 @@ import TeamModals from "./components/TeamModals";
 import SpeechRecognitionUi from "./components/SpeechRecognition";
 import HeaderUI from "./components/HeaderUI";
 import TeamButtons from "./components/TeamButtons";
-import ArenaStyles from "./components/ArenaStyles";
 
 // Import types
 import SpeechRecognition from "./types/speechRecognition";
@@ -146,7 +145,7 @@ export default function Arena() {
   }, []);
 
   const step = 10;
-  const characterSize = { width: 32, height: 48 };
+  const characterSize = { width: 32, height: 32 }; // Adjusted to be a circle
   const tileSize = 32;
 
   const toggleControlsVisibility = () => {
@@ -358,246 +357,74 @@ export default function Arena() {
     router.push("/");
   };
 
+  // Update the stalls to be simpler market sections
   const stalls = [
     {
       id: 1,
-      name: "Rootstock Swap Station",
+      name: "Token Swap",
       x: viewportSize.width * 0.25 - 90,
       y: viewportSize.height * 0.35,
-      width: 180,
-      height: 120,
-      bgColor: "bg-rose-800",
-      borderColor: "border-rose-900",
-      roofColor: "bg-rose-700",
-      roofAltColor: "bg-rose-800",
-      accentColor: "bg-rose-500",
-      darkColor: "bg-rose-950",
-      counterColor: "bg-rose-400",
-      area: "left",
+      width: 160,
+      height: 100,
+      bgColor: "bg-blue-800",
       icon: "🔄",
-      description:
-        "Exchange tokens on Rootstock with the best rates in the night market",
-      decorations: ["lantern", "strings", "steam"],
+      description: "Swap your tokens on Rootstock blockchain",
     },
     {
       id: 2,
-      name: "Rootstock Staking House",
+      name: "Staking Portal",
       x: viewportSize.width * 0.2 - 90,
       y: viewportSize.height * 0.7,
-      width: 180,
-      height: 120,
-      bgColor: "bg-amber-800",
-      borderColor: "border-amber-900",
-      roofColor: "bg-amber-700",
-      roofAltColor: "bg-amber-800",
-      accentColor: "bg-amber-500",
-      darkColor: "bg-amber-950",
-      counterColor: "bg-amber-400",
-      area: "left",
+      width: 160,
+      height: 100,
+      bgColor: "bg-indigo-800",
       icon: "📈",
-      description: "Stake your assets and earn while enjoying the market",
-      decorations: ["coins", "abacus", "incense"],
+      description: "Stake your assets and earn rewards",
     },
     {
       id: 3,
-      name: "Market Info Pavilion",
+      name: "Market Info",
       x: viewportSize.width * 0.5 - 90,
       y: viewportSize.height * 0.25,
-      width: 180,
-      height: 120,
-      bgColor: "bg-blue-800",
-      borderColor: "border-blue-900",
-      roofColor: "bg-blue-700",
-      roofAltColor: "bg-blue-800",
-      accentColor: "bg-blue-500",
-      darkColor: "bg-blue-950",
-      counterColor: "bg-blue-400",
-      area: "center",
+      width: 160,
+      height: 100,
+      bgColor: "bg-cyan-800",
       icon: "ℹ️",
-      description: "Discover everything about crypto and blockchain technology",
-      decorations: ["maps", "scrolls", "brush"],
+      description: "Get information about crypto markets",
     },
     {
       id: 4,
-      name: "Fortune Price Oracle",
+      name: "Price Oracle",
       x: viewportSize.width * 0.45 - 90,
       y: viewportSize.height * 0.6,
-      width: 180,
-      height: 120,
+      width: 160,
+      height: 100,
       bgColor: "bg-teal-800",
-      borderColor: "border-teal-900",
-      roofColor: "bg-teal-700",
-      roofAltColor: "bg-teal-800",
-      accentColor: "bg-teal-500",
-      darkColor: "bg-teal-950",
-      counterColor: "bg-teal-400",
-      area: "center",
       icon: "💰",
-      description: "Get the latest token price predictions and market trends",
-      decorations: ["fortune", "teacup", "coins"],
+      description: "Get the latest token price data",
     },
-    // {
-    //   id: 5,
-    //   name: "Celo Trading Post",
-    //   x: viewportSize.width * 0.8 - 90,
-    //   y: viewportSize.height * 0.28,
-    //   width: 180,
-    //   height: 120,
-    //   bgColor: "bg-indigo-800",
-    //   borderColor: "border-indigo-900",
-    //   roofColor: "bg-indigo-700",
-    //   roofAltColor: "bg-indigo-800",
-    //   accentColor: "bg-indigo-500",
-    //   darkColor: "bg-indigo-950",
-    //   counterColor: "bg-indigo-400",
-    //   area: "right",
-    //   icon: "🔄",
-    //   description: "Trade tokens on Celo with special night market rates",
-    //   decorations: ["baskets", "steam", "glow"],
-    // },
-    // {
-    //   id: 6,
-    //   name: "Celo Staking Bar",
-    //   x: viewportSize.width * 0.7 - 90,
-    //   y: viewportSize.height * 0.55,
-    //   width: 180,
-    //   height: 120,
-    //   bgColor: "bg-violet-800",
-    //   borderColor: "border-violet-900",
-    //   roofColor: "bg-violet-700",
-    //   roofAltColor: "bg-violet-800",
-    //   accentColor: "bg-violet-500",
-    //   darkColor: "bg-violet-950",
-    //   counterColor: "bg-violet-400",
-    //   area: "right",
-    //   icon: "📈",
-    //   description: "Stake your Celo assets while enjoying bubble tea",
-    //   decorations: ["bubbles", "tea", "straws"],
-    // },
     {
       id: 7,
-      name: "Rootstock Balance Checker",
+      name: "Balance Checker",
       x: viewportSize.width * 0.8 - 90,
       y: viewportSize.height * 0.28,
-      width: 180,
-      height: 120,
-      bgColor: "bg-green-800",
-      borderColor: "border-green-900",
-      roofColor: "bg-green-700",
-      roofAltColor: "bg-green-800",
-      accentColor: "bg-green-500",
-      darkColor: "bg-green-950",
-      counterColor: "bg-green-400",
-      area: "left",
-      icon: "💰",
+      width: 160,
+      height: 100,
+      bgColor: "bg-emerald-800",
+      icon: "💼",
       description: "Check your token balances on Rootstock",
-      decorations: ["coins", "abacus"],
     },
     {
       id: 8,
-      name: "Token Transfer Station",
+      name: "Transfer Tokens",
       x: viewportSize.width * 0.7 - 90,
       y: viewportSize.height * 0.55,
-      width: 180,
-      height: 120,
+      width: 160,
+      height: 100,
       bgColor: "bg-purple-800",
-      borderColor: "border-purple-900",
-      roofColor: "bg-purple-700",
-      roofAltColor: "bg-purple-800",
-      accentColor: "bg-purple-500",
-      darkColor: "bg-purple-950",
-      counterColor: "bg-purple-400",
-      area: "right",
       icon: "📤",
-      description: "Send Rootstock tokens to any wallet address",
-      decorations: ["coins", "arrows", "glow"],
+      description: "Transfer tokens to other wallets",
     },
-    {
-      id: 9,
-      name: "Add Your Stall",
-      x: viewportSize.width * 0.85 - 90,
-      y: viewportSize.height * 0.75,
-      width: 180,
-      height: 120,
-      bgColor: "bg-gray-700",
-      borderColor: "border-gray-600",
-      roofColor: "bg-gray-600",
-      roofAltColor: "bg-gray-700",
-      accentColor: "bg-emerald-500",
-      darkColor: "bg-gray-900",
-      counterColor: "bg-emerald-400",
-      area: "expansion",
-      icon: "➕",
-      description: "Join the night market with your own blockchain project",
-      decorations: ["blueprint", "dashed", "glow"],
-      isExpansion: true,
-    },
-  ];
-
-  const lanterns = [
-    { x: viewportSize.width * 0.15, y: 140, color: "red", size: 0.9 },
-    { x: viewportSize.width * 0.38, y: 160, color: "yellow", size: 0.8 },
-    { x: viewportSize.width * 0.73, y: 150, color: "yellow", size: 1 },
-    { x: viewportSize.width * 0.92, y: 135, color: "red", size: 0.7 },
-    {
-      x: viewportSize.width * 0.05,
-      y: viewportSize.height * 0.35,
-      color: "yellow",
-      size: 0.7,
-    },
-    {
-      x: viewportSize.width * 0.12,
-      y: viewportSize.height * 0.5,
-      color: "red",
-      size: 0.85,
-    },
-    {
-      x: viewportSize.width * 0.85,
-      y: viewportSize.height * 0.42,
-      color: "red",
-      size: 0.8,
-    },
-    {
-      x: viewportSize.width * 0.95,
-      y: viewportSize.height * 0.55,
-      color: "yellow",
-      size: 0.75,
-    },
-    {
-      x: viewportSize.width * 0.25,
-      y: viewportSize.height * 0.82,
-      color: "yellow",
-      size: 0.9,
-    },
-    {
-      x: viewportSize.width * 0.6,
-      y: viewportSize.height * 0.88,
-      color: "red",
-      size: 0.8,
-    },
-    {
-      x: viewportSize.width * 0.78,
-      y: viewportSize.height * 0.8,
-      color: "yellow",
-      size: 0.85,
-    },
-  ];
-
-  const streetFoodItems = [
-    {
-      x: viewportSize.width * 0.25,
-      y: viewportSize.height * 0.45,
-      emoji: "🧋",
-    },
-    { x: viewportSize.width * 0.4, y: viewportSize.height * 0.25, emoji: "🥟" },
-    { x: viewportSize.width * 0.6, y: viewportSize.height * 0.45, emoji: "🍜" },
-    {
-      x: viewportSize.width * 0.75,
-      y: viewportSize.height * 0.25,
-      emoji: "🥘",
-    },
-    { x: viewportSize.width * 0.8, y: viewportSize.height * 0.7, emoji: "🍤" },
-    { x: viewportSize.width * 0.2, y: viewportSize.height * 0.7, emoji: "🦪" },
   ];
 
   const emotes = ["👋", "👍", "❤️", "😂", "🎉", "🤔", "👀", "🙏"];
@@ -654,7 +481,7 @@ export default function Arena() {
   }, [username, socket, isConnected, roomCode]);
 
   return (
-    <main className="relative w-full h-screen overflow-hidden bg-blue-950">
+    <main className="relative w-full h-screen overflow-hidden bg-gray-900">
       <HeaderUI
         formattedAddress={formattedAddress}
         returnToHome={returnToHome}
@@ -684,8 +511,6 @@ export default function Arena() {
       <Background
         viewportSize={viewportSize}
         tileSize={tileSize}
-        lanterns={lanterns}
-        streetFoodItems={streetFoodItems}
       />
 
       {stalls.map((stall) => (
@@ -744,8 +569,6 @@ export default function Arena() {
         toggleControlsVisibility={toggleControlsVisibility}
         setShowNameInput={setShowNameInput}
       />
-
-      <ArenaStyles />
     </main>
   );
 }
