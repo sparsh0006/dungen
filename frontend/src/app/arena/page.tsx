@@ -40,6 +40,7 @@ export default function Arena() {
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [agentResponse, setAgentResponse] = useState<string | null>(null);
+  const [theme, setTheme] = useState<"space" | "cave">("space");
 
   const router = useRouter();
   const { user, authenticated } = usePrivy();
@@ -361,14 +362,15 @@ export default function Arena() {
   const stalls = [
     {
       id: 1,
-      name: "Token Swap",
+      name: "Token Swap Terminal",
       x: viewportSize.width * 0.25 - 90,
       y: viewportSize.height * 0.35,
       width: 160,
       height: 100,
-      bgColor: "bg-blue-800",
+      bgColor: theme === "space" ? "bg-blue-800" : "bg-amber-800",
       icon: "🔄",
       description: "Swap your tokens on Rootstock blockchain",
+      type: theme === "space" ? "station" : "outpost",
     },
     {
       id: 2,
@@ -377,53 +379,58 @@ export default function Arena() {
       y: viewportSize.height * 0.7,
       width: 160,
       height: 100,
-      bgColor: "bg-indigo-800",
+      bgColor: theme === "space" ? "bg-indigo-800" : "bg-amber-800/80",
       icon: "📈",
       description: "Stake your assets and earn rewards",
+      type: theme === "space" ? "station" : "outpost",
     },
     {
       id: 3,
-      name: "Market Info",
+      name: "Data Center",
       x: viewportSize.width * 0.5 - 90,
       y: viewportSize.height * 0.25,
       width: 160,
       height: 100,
-      bgColor: "bg-cyan-800",
+      bgColor: theme === "space" ? "bg-blue-900" : "bg-amber-900",
       icon: "ℹ️",
       description: "Get information about crypto markets",
+      type: theme === "space" ? "station" : "outpost",
     },
     {
       id: 4,
-      name: "Price Oracle",
+      name: "Oracle Hub",
       x: viewportSize.width * 0.45 - 90,
       y: viewportSize.height * 0.6,
       width: 160,
       height: 100,
-      bgColor: "bg-teal-800",
+      bgColor: theme === "space" ? "bg-violet-800" : "bg-yellow-800",
       icon: "💰",
       description: "Get the latest token price data",
+      type: theme === "space" ? "station" : "outpost",
     },
     {
-      id: 7,
-      name: "Balance Checker",
+      id: 5,
+      name: "Balance Scanner",
       x: viewportSize.width * 0.8 - 90,
       y: viewportSize.height * 0.28,
       width: 160,
       height: 100,
-      bgColor: "bg-emerald-800",
+      bgColor: theme === "space" ? "bg-cyan-800" : "bg-amber-700",
       icon: "💼",
       description: "Check your token balances on Rootstock",
+      type: theme === "space" ? "station" : "outpost",
     },
     {
-      id: 8,
-      name: "Transfer Tokens",
+      id: 6,
+      name: "Transfer Module",
       x: viewportSize.width * 0.7 - 90,
       y: viewportSize.height * 0.55,
       width: 160,
       height: 100,
-      bgColor: "bg-purple-800",
+      bgColor: theme === "space" ? "bg-purple-800" : "bg-yellow-900",
       icon: "📤",
       description: "Transfer tokens to other wallets",
+      type: theme === "space" ? "station" : "outpost",
     },
   ];
 
@@ -487,6 +494,7 @@ export default function Arena() {
         returnToHome={returnToHome}
         roomCode={roomCode}
         handleLeaveRoom={handleLeaveRoom}
+        theme={theme} // Add this line
       />
 
       <TeamButtons
@@ -511,6 +519,7 @@ export default function Arena() {
       <Background
         viewportSize={viewportSize}
         tileSize={tileSize}
+        theme={theme}
       />
 
       {stalls.map((stall) => (
@@ -568,6 +577,8 @@ export default function Arena() {
         showControls={showControls}
         toggleControlsVisibility={toggleControlsVisibility}
         setShowNameInput={setShowNameInput}
+        theme={theme} // Add this line
+        toggleTheme={() => setTheme(theme === "space" ? "cave" : "space")} // Add this line
       />
     </main>
   );

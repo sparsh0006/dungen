@@ -5,6 +5,7 @@ interface HeaderUIProps {
   returnToHome: () => void;
   roomCode: string | null;
   handleLeaveRoom: () => void;
+  theme: "space" | "cave";
 }
 
 const HeaderUI: React.FC<HeaderUIProps> = ({
@@ -12,6 +13,7 @@ const HeaderUI: React.FC<HeaderUIProps> = ({
   returnToHome,
   roomCode,
   handleLeaveRoom,
+  theme
 }) => {
   return (
     <>
@@ -24,7 +26,7 @@ const HeaderUI: React.FC<HeaderUIProps> = ({
         </button>
         <div className="flex flex-col items-center">
           <h1 className="text-2xl font-bold text-white">
-            Crypto-Market
+            {theme === "space" ? "Space Station Alpha" : "Crystal Caverns"}
           </h1>
         </div>
         <div className="px-3 py-1 bg-blue-600 text-white rounded-md text-sm flex items-center">

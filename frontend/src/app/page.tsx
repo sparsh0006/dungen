@@ -24,7 +24,11 @@ export default function Home() {
     <main className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 flex flex-col items-center justify-center p-4">
       <div className="max-w-2xl w-full bg-gray-800 rounded-lg shadow-xl overflow-hidden">
         <div className="p-8 text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">Crypto-Market</h1>
+            <h1 className="text-4xl font-bold text-white mb-4">
+              Space Station Alpha
+              {/* Or if you prefer the cave theme */}
+              {/* Crystal Caverns */}
+            </h1>
           <p className="text-gray-300 mb-8">
             A simple interface to interact with your crypto assets
           </p>

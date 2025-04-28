@@ -4,12 +4,16 @@ interface ControlsUIProps {
   showControls: boolean;
   toggleControlsVisibility: () => void;
   setShowNameInput: (show: boolean) => void;
+  theme: "space" | "cave"; // Add this line
+  toggleTheme: () => void; // Add this line
 }
 
 const ControlsUI: React.FC<ControlsUIProps> = ({
   showControls,
   toggleControlsVisibility,
   setShowNameInput,
+  theme, // Add this line
+  toggleTheme, // Add this line
 }) => {
   if (!showControls) {
     return (
@@ -59,6 +63,26 @@ const ControlsUI: React.FC<ControlsUIProps> = ({
       >
         Hide UI
       </button>
+
+      <button
+        className="px-2 py-1 bg-blue-600 hover:bg-blue-500 rounded text-xs"
+        onClick={() => setShowNameInput(true)}
+      >
+        Change Name
+      </button>
+      <button
+        className="px-2 py-1 bg-purple-600 hover:bg-purple-500 rounded text-xs ml-2"
+        onClick={toggleTheme}
+      >
+        Switch to {theme === "space" ? "Cave" : "Space"}
+      </button>
+      <button
+        className="px-2 py-1 bg-gray-700 hover:bg-gray-600 rounded text-xs ml-2"
+        onClick={toggleControlsVisibility}
+      >
+        Hide UI
+      </button>
+
     </div>
   );
 };
