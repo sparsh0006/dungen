@@ -81,15 +81,19 @@ pnpm install
 3. Create environment files
 ```bash
 # In the agent directory create a .env with given variables
+cp .env.example .env
+```
+4. Set environment variables
+```bash
+# Fill in your AI API keys and wallet private key
 WALLET_PRIVATE_KEY=YOUR_PRIVATE_KEY (add 0x in the starting of the key)
 RPC_PROVIDER_URL=https://mycrypto.rsk.co
 COINGECKO_API_KEY=YOUR_COINGECKO_API_KEY
 GOOGLE_API_KEY=YOUR_GOOGLE_GEMINI_API_KEY   
 OPENAI_API_KEY=YOUR_OPENAI_API_KEY
-# Fill in your AI API keys and wallet private key
 ```
 
-4. Start the development servers
+5. Start the development servers
 ```bash
 # Start agent server
 cd agent
@@ -100,7 +104,7 @@ cd frontend
 pnpm run dev
 ```
 
-5. Open your browser at http://localhost:3001
+6. Open your browser at http://localhost:3001
 
 ## Contributions
 This project was developed during the (A)I Buidl Lab hackathon.
