@@ -8,10 +8,10 @@ This document details the AI technologies, models, and methodologies employed in
 
 | Model | Provider | Use Case | Benefits |
 |-------|----------|----------|----------|
-| GPT-4o-mini | OpenAI | Natural language processing for user queries | Fast response time, good parameter extraction, cost-effective |
-| Gemini | Google | Fallback model for NLP | Different strengths, redundancy |
-| Claude 3 Opus | Anthropic | Code generation and architecture design | Excellent at understanding complex requirements for system design |
-| Claude 3 Sonnet | Anthropic | UI component generation | Strong visual design understanding, good at React and Tailwind |
+| Gemini | Google | Natural language processing for user queries | Fast response time, good parameter extraction, cost-effective |
+| Gpt-40-mini | OpenAI | Fallback model for NLP | Different strengths, redundancy |
+| Claude 3.7 Sonnet | Anthropic | Code generation and architecture design | Excellent at understanding complex requirements for system design |
+| Claude 3.7 Sonnet | Anthropic | UI component generation | Strong visual design understanding, good at React and Tailwind |
 
 ### 1.2 Supporting AI Services
 

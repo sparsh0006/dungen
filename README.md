@@ -9,12 +9,11 @@ DunGen is an interactive crypto market interface built on Rootstock blockchain t
 - **Balance Checking**: Check token balances across different addresses
 - **Token Transfers**: Transfer tokens between wallets
 - **Interactive UI**: Game-like interface with themed environments
-- **Multiplayer Support**: Connect with other users in shared spaces
 
 ## Tech Stack
 - **Frontend**: Next.js, Tailwind CSS, React
 - **Backend**: Express.js, Socket.io
-- **AI Integration**: Claude, GPT models
+- **AI Integration**: Claude, GPT ,Gemini models
 - **Blockchain**: Rootstock smart contracts, Viem, Wagmi
 - **Authentication**: Privy Auth
 
@@ -34,7 +33,7 @@ This project extensively leveraged AI throughout its development process:
     └── server.ts      # Main server setup
 ├── contract/          # Smart contracts for Rootstock blockchain
     ├── constants.ts   # Contract addresses and ABIs
-    ├── taifeiBazaarRootstock.sol  # Main swap contract
+    ├── spaceStationRootstock.sol  # Main swap contract
     └── yrbtc.sol      # RBTC yield token contract
 └── frontend/          # Next.js frontend application
     ├── components/    # Shared React components
@@ -45,8 +44,8 @@ This project extensively leveraged AI throughout its development process:
 
 ## How It Works
 1. Users connect their wallet using Privy Auth
-2. They enter the interactive "Arena" interface
-3. By approaching different "stalls" in the interface, they can interact with different crypto functions
+2. They enter the interactive "Space" interface
+3. By approaching different "Space-Station" in the interface, they can interact with different crypto functions
 4. Using voice commands (pressing Space), users can speak natural language requests like "Swap 5 RUSDT to RBTC"
 5. The AI agent processes these requests and executes the appropriate blockchain transactions
 6. Real-time feedback is provided through both visual and audio responses
@@ -81,8 +80,12 @@ pnpm install
 
 3. Create environment files
 ```bash
-# In the agent directory
-cp .env.example .env
+# In the agent directory create a .env with given variables
+WALLET_PRIVATE_KEY=YOUR_PRIVATE_KEY (add 0x in the starting of the key)
+RPC_PROVIDER_URL=https://mycrypto.rsk.co
+COINGECKO_API_KEY=YOUR_COINGECKO_API_KEY
+GOOGLE_API_KEY=YOUR_GOOGLE_GEMINI_API_KEY   
+OPENAI_API_KEY=YOUR_OPENAI_API_KEY
 # Fill in your AI API keys and wallet private key
 ```
 
