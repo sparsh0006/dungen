@@ -25,9 +25,9 @@ const HeaderUI: React.FC<HeaderUIProps> = ({
           ← Home
         </button>
         <div className="flex flex-col items-center">
-          <h1 className="text-2xl font-bold text-white">
-            {theme === "space" ? "Space Station Alpha" : "Crystal Caverns"}
-          </h1>
+            <h1 className="text-2xl font-bold text-white">
+              {theme === "space" ? "DunGen : A Space Odyssey" : "Crystal Caverns"}
+            </h1>
         </div>
         <div className="px-3 py-1 bg-blue-600 text-white rounded-md text-sm flex items-center">
           <div className="w-2 h-2 bg-blue-300 rounded-full mr-2 animate-pulse"></div>
