@@ -101,6 +101,8 @@ router.post(
         });
         
         const result = geminiResponse.response.text();
+
+        console.log("Agent response (Gemini):", result);
         
         res.json({
           response: result,
@@ -124,6 +126,8 @@ router.post(
           console.log("Tool Results:", event.toolResults);
         },
       });
+
+      console.log("Agent response (OpenAI):", result.text);
 
       res.json({
         response: result.text,
