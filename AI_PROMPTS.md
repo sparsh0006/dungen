@@ -56,11 +56,6 @@ Effective AI interaction was achieved through careful prompt engineering:
 *   **Contextual Augmentation:** The frontend automatically appends the user's wallet address to the prompt, providing necessary context for the AI without requiring the user to state it.
 *   **Iterative Refinement:** Prompts were continuously tested and refined based on error analysis and user feedback, moving from basic intent recognition to the final rich, contextual prompt (detailed in `PROMPT_ENGINEERING_INSIGHTS.md`).
 
-**5. Evaluation & Iteration:**
-
-*   A synthetic dataset of ~200 queries was used to test and compare model performance (leading to Gemini as primary, GPT as fallback).
-*   Metrics like Intent Recognition Accuracy (96.7%), Parameter Extraction Accuracy (94.2%), and user satisfaction (4.7/5) were tracked.
-*   Error analysis led to specific prompt improvements (e.g., adding token lists to reduce token misidentification).
 
 ## Prompt Submission
 
