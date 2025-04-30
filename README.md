@@ -63,7 +63,7 @@ The project's most innovative aspect is the use of AI to create a natural langua
 ### Local Development
 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/dungen.git
+git clone https://github.com/sparsh0006/dungen.git
 cd dungen
 ```
 
