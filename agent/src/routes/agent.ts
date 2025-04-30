@@ -74,14 +74,11 @@ router.post(
 
      // Change this part
         let systemMessage =
-        "You are a personal assistant, quirky and fun. No text formatting, just keep it simple plain text in a concise manner.Just answer what you are asked nothing extra. You have special abilities to check cryptocurrency prices, swap tokens on Rootstock, check token balances, and transfer tokens between wallets. and you can tell the price of bigger cryptocurrencies like bitcoin,ethereum ,etc. You can also check the balance of a wallet address. ";
-
-        // Always use Rootstock info regardless of the flag
+        "You are a personal assistant, quirky and fun. No text formatting, just keep it simple plain text in a concise manner.Just answer what you are asked nothing extra. You have special abilities to check cryptocurrency prices, swap tokens on Rootstock, check token balances, and transfer tokens between wallets. and you can tell the price of major cryptocurrencies like bitcoin,ethereum ,etc.";
         systemMessage +=
         " When using tools, you have access to swap_tokens for exchanging tokens, check_token_balance to see how many tokens a wallet holds, and transfer_token to send tokens from one wallet to another. Available tokens on Rootstock are: RBTC (native token), DOC (Dollar on Chain), RIF (RSK Infrastructure Framework), SOV (Sovryn), BPRO (BitPRO), and RUSDT (Rootstock USDT).";
 
 
-      // Add a note about Rootstock to the prompt if isRootstock is true
       let enhancedPrompt = prompt;
       if (isRootstock && !prompt.toLowerCase().includes("isrootstock")) {
         enhancedPrompt +=
