@@ -82,6 +82,8 @@ pnpm install
 ```bash
 # In the agent directory create a .env with given variables
 cp .env.example .env
+# In the frontend directory create a .env with given variables
+cp .env.example .env
 ```
 4. Set environment variables
 ```bash
